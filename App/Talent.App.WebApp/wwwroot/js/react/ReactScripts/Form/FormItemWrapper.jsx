@@ -9,7 +9,7 @@ export default class FormItemWrapper extends React.Component {
                     <h3>{this.props.title}</h3>
                     <div className="tooltip">{this.props.tooltip}</div>
                 </div>
-                <div className="ui twelve wide column">
+                <div className="ui twelve wide column" >
                     {
                         this.props.hideSegment ?
                             <div className='ui grid'>
@@ -19,7 +19,7 @@ export default class FormItemWrapper extends React.Component {
                             </div>
                             :
                             <div className='ui segment'>
-                                <div className='ui grid'>
+                                <div>
                                     {this.props.children}
                                 </div>
                             </div>

@@ -1,5 +1,6 @@
 ﻿import React from 'react';
 import Cookies from 'js-cookie';
+import { TextArea, Input } from 'semantic-ui-react';
 
 export class Description extends React.Component {
 
@@ -28,14 +29,20 @@ export class Description extends React.Component {
         return (
             <React.Fragment>
                 <div className="four wide column">
-                    <h3>Description</h3>
-                    <div className="tooltip">Write a description of your company.</div>
+                    <div className="field">
+                        <Input placeholder='Please provide a short summary about yourself' />
+                    </div>
+                    <b>Summary must be no more than 150 characters.</b>
                 </div>
-                <div className="ten wide column">
+                
+                <div className="ten wide column" style={{'marginTop': '2rem'}}>
                     <div className="field" >
                         <textarea maxLength={characterLimit} name="Description" placeholder="Please tell us about any hobbies, additional expertise, or anything else you’d like to add." value={this.props.description} onChange={this.update} ></textarea>
                     </div>
-                    <p>Characters remaining : {characters} / {characterLimit}</p>
+                    <div style={{'paddingBottom': '1rem'}}>
+                        <b>Characters remaining : {characters} / {characterLimit}</b>
+                        <button type="button" className="ui right floated teal button">Save</button>
+                     </div>          
                 </div>
             </React.Fragment>
         )

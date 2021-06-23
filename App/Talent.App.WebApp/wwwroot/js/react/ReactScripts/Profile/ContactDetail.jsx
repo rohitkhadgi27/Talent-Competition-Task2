@@ -129,13 +129,14 @@ export class IndividualDetailSection extends Component {
                         <p>Email: {email}</p>
                         <p>Phone: {phone}</p>
                     </React.Fragment>
-                    <button type="button" className="ui right floated teal button" onClick={this.openEdit}>Edit</button>
+                    <div style={{'paddingBottom': '2.5rem'}}>
+                        <button type="button" className="ui right floated teal button" onClick={this.openEdit}>Edit</button>
+                    </div>
                 </div>
             </div>
         )
     }
 }
-
 
 export class CompanyDetailSection extends Component {
     constructor(props) {
@@ -224,7 +225,6 @@ export class CompanyDetailSection extends Component {
                     placeholder="Enter an email"
                     errorMessage="Please enter a valid email"
                 />
-
                 <ChildSingleInput
                     inputType="text"
                     label="Phone number"
@@ -244,7 +244,6 @@ export class CompanyDetailSection extends Component {
     }
 
     renderDisplay() {
-
         let companyName = this.props.details ? this.props.details.name : ""
         let email = this.props.details ? this.props.details.email : ""
         let phone = this.props.details ? this.props.details.phone : ""
@@ -260,7 +259,7 @@ export class CompanyDetailSection extends Component {
                         <p>Name: {companyName}</p>
                         <p>Email: {email}</p>
                         <p>Phone: {phone}</p>
-                        <p> Location: {location.city}, {location.country}</p>
+                        <p>Location: {location.city}, {location.country}</p>
                     </React.Fragment>
                     <button type="button" className="ui right floated teal button" onClick={this.openEdit}>Edit</button>
                 </div>
