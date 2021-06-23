@@ -32,17 +32,16 @@ export default class Experience extends React.Component {
             ]
         }
 
-        this.addExperience = this.addExperience.bind(this)    
-        this.saveExperience = this.saveExperience.bind(this)
+        this.addExperience = this.addExperience.bind(this) 
+        this.saveExperience = this.saveExperience.bind(this)   
+        this.updateExperience = this.updateExperience.bind(this)
         this.cancelExperience = this.cancelExperience.bind(this)
         this.renderAdd = this.renderAdd.bind(this)
         this.renderTable = this.renderTable.bind(this)
         this.toggleState = this.toggleState.bind(this)
     }
 
-    toggleState(id, index) {
-        console.log("id is " +id)
-        console.log("index is " +index)
+    toggleState(index) {
         this.setState({
             showEditSection: !this.state.showEditSection,
             editIdx: index
@@ -61,9 +60,16 @@ export default class Experience extends React.Component {
         })
     }
 
+    updateExperience() {
+        this.setState({
+            showEditSection: false
+        })
+    }
+
     cancelExperience() {
         this.setState({
             showAddSection: false
+
         })
     } 
 
@@ -75,37 +81,31 @@ export default class Experience extends React.Component {
         )   
     }
 
-    renderEdit(x) {
+    renderEdit(exp) {
         return(
-            <Table.Row key={x.id}>
-                <Table.Cell>
-                    <Form.Group>
-                        <Form.Input label='Company' defaultValue={x.company} />
-                        <Form.Input label='Position' defaultValue={x.position} />
-                    </Form.Group>
-                </Table.Cell>
-                <Table.cell>
-                    <Form.Group>
-                        <Form.Input label='Start Date' defaultValue={x.start} />
-                        <Form.Input label='End Date' defaultValue={x.end} />
-                    </Form.Group >
-                </Table.cell>
-               {/* <Table.Cell>
-                    <Form.Group widths={2}>
-                        <Form.Input label='Responsibilities' defaultValue={x.responsibilites} /> 
-                    </Form.Group>
-                </Table.Cell>
-                <Table.Cell>
-                    <Button color="teal" type='submit'>Add</Button>
-                    <Button type='submit'>Cancel</Button> 
-                </Table.Cell>      */}
+            <Table.Row key={exp.id}>
+                <Table.Cell colspan="6">
+                    <React.Fragment>
+                        <Form.Group widths={2}>
+                            <Form.Input label='Company' defaultValue={exp.company} />
+                            <Form.Input label='Position' defaultValue={exp.position} />
+                        </Form.Group>
+                        <Form.Group widths={2}>
+                            <Form.Input label='Start Date' defaultValue={exp.start} />
+                            <Form.Input label='End Date' defaultValue={exp.end} />
+                        </Form.Group>
+                        <Form.Input fluid label='Responsibilities' defaultValue={exp.responsibilites} /> 
+                        <button type="button" className="ui teal button" onClick={this.toggleState}>Update</button>
+                        <button type="button" className="ui button" onClick={this.toggleState}>Cancel</button>
+                    </React.Fragment>
+                </Table.Cell>               
             </Table.Row>                         
         )
     }
  
     renderAdd() {
         return( 
-            <div>
+            <React.Fragment>
                 <div>
                     <Form.Group widths={2}>
                         <Form.Input label='Company' placeholder='Compnay' />
@@ -115,20 +115,18 @@ export default class Experience extends React.Component {
                         <Form.Input label='Start Date' placeholder='21/08/2018' />
                         <Form.Input label='End Date' placeholder='21/08/2018' />
                     </Form.Group >
-                    <Form.Group widths={2}>
-                        <Form.Input label='Responsibilities' placeholder='Responsibilities' /> 
-                    </Form.Group>  
-                    <Button color="teal" type='submit'>Add</Button>
-                    <Button type='submit'>Cancel</Button>
+                    <Form.Input fluid label='Responsibilities' placeholder='Responsibilities' /> 
+                    <button type="button" className="ui teal button" onClick={this.saveExperience}>Save</button>
+                    <button type="button" className="ui button" onClick={this.cancelExperience}>Cancel</button>
                 </div>
                     {this.renderTable()} 
-            </div>     
+            </React.Fragment>     
        )    
    }
    
    renderTable() {
         return(
-            <Table singleLine>
+            <Table padded>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>Company</Table.HeaderCell>
@@ -144,30 +142,30 @@ export default class Experience extends React.Component {
                 </Table.Header>
 
                 <Table.Body>   
-                    {this.state.experienceData.map((x, index) => 
+                    {this.state.experienceData.map((exp, index) => 
                     (this.state.editIdx === index) ?
-                        this.renderEdit(x) :
-                        <Table.Row key={x.id}>    
+                        this.renderEdit(exp) :
+                        <Table.Row key={exp.id}>    
                             <Table.Cell>
-                                {x.company}
+                                {exp.company}
                             </Table.Cell>
                             <Table.Cell>
-                                {x.position}
+                                {exp.position}
                             </Table.Cell>
                             <Table.Cell>
-                                {x.responsibilites}
+                                {exp.responsibilites}
                             </Table.Cell>
                             <Table.Cell>
-                                {x.start}
+                                {exp.start}
                             </Table.Cell>
                             <Table.Cell>
-                                {x.end}
+                                {exp.end}
                             </Table.Cell>
                             <Table.Cell>
                                 <div style={{'float': 'right'}}>
                                     <Icon name='pencil alternate' style={{'paddingRight': '2rem'}} onClick={(e) => {
                                         e.stopPropagation();
-                                        this.toggleState(x.id, index); 
+                                        this.toggleState(index); 
                                     }}></Icon>
                                     <Icon name='remove'></Icon>
                                 </div>                      

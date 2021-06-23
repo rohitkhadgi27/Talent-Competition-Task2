@@ -94,7 +94,7 @@ export default class Skill extends React.Component {
  
     renderAdd() {
         return(
-            <div>
+            <React.Fragment>
                 <div>
                     <Form.Group>              
                         <Form.Input
@@ -105,7 +105,7 @@ export default class Skill extends React.Component {
                     </Form.Group>
                 </div>
                 {this.renderTable()}  
-            </div>
+            </React.Fragment>
        )    
    }
    
