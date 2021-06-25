@@ -39,7 +39,7 @@ export default class SocialMediaLinkedAccount extends React.Component {
 
     renderEdit() { 
         return(
-            <Form>
+            <React.Fragment>
                 <Form.Field>
                     <label>LinkedIn</label>
                     <input placeholder='Enter your LinkedIn Url' />
@@ -50,7 +50,7 @@ export default class SocialMediaLinkedAccount extends React.Component {
                 </Form.Field>
                 <Button type='submit' color='blue'>Save</Button>
                 <Button type='submit'>Cancel</Button>
-          </Form>
+          </React.Fragment>
         )
     }
 

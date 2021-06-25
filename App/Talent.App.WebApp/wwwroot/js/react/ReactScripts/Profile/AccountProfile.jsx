@@ -237,22 +237,22 @@ export default class AccountProfile extends React.Component {
                                             title='Visa Status'
                                             tooltip='What is your current Visa/Citizenship status?'
                                         >
-                                            {/* <VisaStatus
+                                            <VisaStatus
                                                 visaStatus={this.state.profileData.visaStatus}
                                                 visaExpiryDate={this.state.profileData.visaExpiryDate}
                                                 updateProfileData={this.updateWithoutSave}
                                                 saveProfileData={this.updateAndSaveData}
-                                            /> */}
+                                            />
                                         </FormItemWrapper>
                                         <FormItemWrapper
                                             title='Status'
                                             tooltip='What is your current status in jobseeking?'
                                         >
-                                            {/* <TalentStatus
+                                            <TalentStatus
                                                 status={this.state.profileData.jobSeekingStatus}
                                                 updateProfileData={this.updateWithoutSave}
                                                 saveProfileData={this.updateAndSaveData}
-                                            /> */}
+                                            />
                                         </FormItemWrapper>
                                         <FormItemWrapper
                                             title='Profile Photo'

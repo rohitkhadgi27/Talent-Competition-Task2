@@ -84,7 +84,7 @@ export default class Experience extends React.Component {
     renderEdit(exp) {
         return(
             <Table.Row key={exp.id}>
-                <Table.Cell colspan="6">
+                <Table.Cell colSpan="6">
                     <React.Fragment>
                         <Form.Group widths={2}>
                             <Form.Input label='Company' defaultValue={exp.company} />

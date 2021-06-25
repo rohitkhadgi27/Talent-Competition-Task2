@@ -44,7 +44,7 @@ export class Address extends React.Component {
 
     renderEdit() {
         return (
-            <Form>
+            <React.Fragment>
             <Form.Group widths='equal'>              
                 <Form.Field
                     control={Input}
@@ -81,7 +81,7 @@ export class Address extends React.Component {
             </Form.Group>
             <button type="button" className="ui teal button" onClick={this.saveContact}>Save</button>
             <button type="button" className="ui button" onClick={this.closeEdit}>Cancel</button>
-          </Form>
+          </React.Fragment>
         )
     }
 
